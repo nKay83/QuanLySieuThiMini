@@ -40,7 +40,8 @@ public class LoginForm extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         btnClear = new javax.swing.JButton();
-        btnDangNhap1 = new javax.swing.JButton();
+        btnDangNhap = new javax.swing.JButton();
+        rbHienMatKhau = new javax.swing.JRadioButton();
 
         lbHeader.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lbHeader.setForeground(new java.awt.Color(255, 255, 255));
@@ -50,18 +51,18 @@ public class LoginForm extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 0, 204));
 
-        jPanel3.setBackground(new java.awt.Color(0, 102, 255));
+        jPanel3.setBackground(new java.awt.Color(75, 8, 113));
 
         jLabelImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/loginBack.png"))); // NOI18N
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 102, 255));
+        jLabel1.setForeground(new java.awt.Color(75, 8, 113));
         jLabel1.setText("Siêu thị MINI");
 
-        jSeparator1.setBackground(new java.awt.Color(0, 102, 255));
-        jSeparator1.setForeground(new java.awt.Color(0, 102, 255));
+        jSeparator1.setBackground(new java.awt.Color(75, 8, 113));
+        jSeparator1.setForeground(new java.awt.Color(75, 8, 113));
 
         txTenDangNhap.setBackground(new java.awt.Color(255, 255, 255));
         txTenDangNhap.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -84,7 +85,7 @@ public class LoginForm extends javax.swing.JFrame {
 
         btnClear.setBackground(new java.awt.Color(255, 255, 255));
         btnClear.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        btnClear.setForeground(new java.awt.Color(0, 102, 255));
+        btnClear.setForeground(new java.awt.Color(75, 8, 113));
         btnClear.setText("Clear");
         btnClear.setBorder(null);
         btnClear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -94,17 +95,21 @@ public class LoginForm extends javax.swing.JFrame {
             }
         });
 
-        btnDangNhap1.setBackground(new java.awt.Color(0, 102, 255));
-        btnDangNhap1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        btnDangNhap1.setForeground(new java.awt.Color(255, 255, 255));
-        btnDangNhap1.setText("Đăng nhập");
-        btnDangNhap1.setBorder(null);
-        btnDangNhap1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnDangNhap1.addActionListener(new java.awt.event.ActionListener() {
+        btnDangNhap.setBackground(new java.awt.Color(75, 8, 113));
+        btnDangNhap.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        btnDangNhap.setForeground(new java.awt.Color(255, 255, 255));
+        btnDangNhap.setText("Đăng nhập");
+        btnDangNhap.setBorder(null);
+        btnDangNhap.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnDangNhap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDangNhap1ActionPerformed(evt);
+                btnDangNhapActionPerformed(evt);
             }
         });
+
+        rbHienMatKhau.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        rbHienMatKhau.setForeground(new java.awt.Color(51, 51, 51));
+        rbHienMatKhau.setText("Hiện mật khẩu");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -112,11 +117,6 @@ public class LoginForm extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
-                        .addComponent(btnDangNhap1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 37, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -127,7 +127,14 @@ public class LoginForm extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(txMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(rbHienMatKhau)
+                            .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(27, 27, 27)
+                        .addComponent(btnDangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(21, 21, 21))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -152,12 +159,14 @@ public class LoginForm extends javax.swing.JFrame {
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addComponent(rbHienMatKhau)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnDangNhap1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnDangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(41, 41, 41))
         );
 
@@ -199,9 +208,9 @@ public class LoginForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnClearActionPerformed
 
-    private void btnDangNhap1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhap1ActionPerformed
+    private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnDangNhap1ActionPerformed
+    }//GEN-LAST:event_btnDangNhapActionPerformed
 
     /**
      * @param args the command line arguments
@@ -240,7 +249,7 @@ public class LoginForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
-    private javax.swing.JButton btnDangNhap1;
+    private javax.swing.JButton btnDangNhap;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -249,6 +258,7 @@ public class LoginForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lbHeader;
+    private javax.swing.JRadioButton rbHienMatKhau;
     private javax.swing.JTextField txMatKhau;
     private javax.swing.JTextField txTenDangNhap;
     // End of variables declaration//GEN-END:variables

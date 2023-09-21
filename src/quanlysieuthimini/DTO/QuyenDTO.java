@@ -4,14 +4,14 @@
  */
 package quanlysieuthimini.DTO;
 
-public class ChucVuDTO {
+public class QuyenDTO {
     private int MaQuyen;
     private String TenQuyen;
 
-    public ChucVuDTO() {
+    public QuyenDTO() {
     }
 
-    public ChucVuDTO(int MaQuyen, String TenQuyen) {
+    public QuyenDTO(int MaQuyen, String TenQuyen) {
         this.MaQuyen = MaQuyen;
         this.TenQuyen = TenQuyen;
     }
