@@ -6,15 +6,14 @@ package quanlysieuthimini.DTO;
 
 public class HangSanXuatDTO {
     private int MaHang;
-    private String TenHang, TruSo;
+    private String TenHang;
 
     public HangSanXuatDTO() {
     }
 
-    public HangSanXuatDTO(int MaHang, String TenHang, String TruSo) {
+    public HangSanXuatDTO(int MaHang, String TenHang) {
         this.MaHang = MaHang;
         this.TenHang = TenHang;
-        this.TruSo = TruSo;
     }
 
     public int getMaHang() {
@@ -31,14 +30,6 @@ public class HangSanXuatDTO {
 
     public void setTenHang(String TenHang) {
         this.TenHang = TenHang;
-    }
-
-    public String getTruSo() {
-        return TruSo;
-    }
-
-    public void setTruSo(String TruSo) {
-        this.TruSo = TruSo;
     }
     
 }

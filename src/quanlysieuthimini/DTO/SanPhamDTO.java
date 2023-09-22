@@ -8,15 +8,16 @@ import java.time.LocalDate;
 
 public class SanPhamDTO {
     private int MaSP, MaLoai, MaHang, MaDV, MaNCC;
-    private String TenSP;
+    private String TenSP, HinhAnh;
     private int SoLuong, DungTich;
     private double DonGia;
     private LocalDate NgaySX, HanSD;
+    private boolean TrangThai;
 
     public SanPhamDTO() {
     }
 
-    public SanPhamDTO(int MaSP, int MaLoai, int MaHang, int MaDV, int MaNCC, String TenSP, int SoLuong, int DungTich, double DonGia, LocalDate NgaySX, LocalDate HanSD) {
+    public SanPhamDTO(int MaSP, int MaLoai, int MaHang, int MaDV, int MaNCC, String TenSP, int SoLuong, int DungTich, double DonGia, LocalDate NgaySX, LocalDate HanSD, String HinhAnh, boolean TrangThai) {
         this.MaSP = MaSP;
         this.MaLoai = MaLoai;
         this.MaHang = MaHang;
@@ -28,6 +29,8 @@ public class SanPhamDTO {
         this.DonGia = DonGia;
         this.NgaySX = NgaySX;
         this.HanSD = HanSD;
+        this.HinhAnh = HinhAnh;
+        this.TrangThai = TrangThai;
     }
 
     public int getMaSP() {
@@ -117,5 +120,20 @@ public class SanPhamDTO {
     public void setHanSD(LocalDate HanSD) {
         this.HanSD = HanSD;
     }
-    
+
+    public String getHinhAnh() {
+        return HinhAnh;
+    }
+
+    public void setHinhAnh(String HinhAnh) {
+        this.HinhAnh = HinhAnh;
+    }
+
+    public boolean isTrangThai() {
+        return TrangThai;
+    }
+
+    public void setTrangThai(boolean TrangThai) {
+        this.TrangThai = TrangThai;
+    }
 }

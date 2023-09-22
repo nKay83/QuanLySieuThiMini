@@ -4,60 +4,108 @@
  */
 package quanlysieuthimini.DAO;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.time.LocalDate;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import quanlysieuthimini.DTO.ChiTietThanhToanDTO;
+import quanlysieuthimini.DAO.DAOInterface.DAOInterface;
 
-/**
- *
- * @author Phong
- */
-public class ChiTietThanhToanDAO {
+public class ChiTietThanhToanDAO implements DAOInterface<ChiTietThanhToanDTO> {
     
-    public List<ChiTietThanhToanDTO> getAll (){
-        String query = "Select * From chitietthanhtoan";
-        List<ChiTietThanhToanDTO> list = new ArrayList<>();
-        ConnectionDB connect = new ConnectionDB();
-        ResultSet rs = connect.sqlQuery(query);
-        try {
-            while(rs.next()){
-                list.add(new ChiTietThanhToanDTO(rs.getInt("MaKH"),rs.getInt("MaHTTT"),
-                        rs.getDouble("SoTien"),rs.getObject("NgayTT", LocalDate.class)));
+    public static ChiTietThanhToanDAO getInstance() {
+        return new ChiTietThanhToanDAO();
+    }
+
+    @Override
+    public boolean insert(ChiTietThanhToanDTO t) {
+        boolean result = false;
+        int auto_id = -1;
+        //Bước 1: tạo kết nối với sql
+        Connection connect = ConnectionDB.openConnection();
+        if (connect != null) {
+            try {
+                String sql = "INSERT into chitietthanhtoan "
+                        + "(SoTien,NgayTT) "
+                        + "VALUES (?,?)";
+               
+                //Bước 2: tạo đối tượng preparedStatement
+                PreparedStatement stmt = connect.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS); 
+                
+                stmt.setDouble(1, t.getSoTien());
+                stmt.setDate(2,java.sql.Date.valueOf(t.getNgayThanhToan()));
+
+                result = stmt.executeUpdate()>=1;
+                
+                if (result) {
+                    ResultSet rs = stmt.getGeneratedKeys();
+                    rs.next();
+                    auto_id = rs.getInt(1);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(ChiTietThanhToanDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                ConnectionDB.closeConnection(connect);
             }
-        } catch (Exception e) {
-            System.out.println(e);
         }
-        connect.closeConnect();
-        return list;
+        return result;
     }
-    
-    public ChiTietThanhToanDTO getCustomerById (int MaHD){
-        String query = "Select * From chitietthanhtoan where `MaHD` = '" + MaHD + "'";
-        ChiTietThanhToanDTO cttt = null;
-        ConnectionDB connect = new ConnectionDB();
-        ResultSet rs = connect.sqlQuery(query);
-        try {
-            while(rs.next()){
-                cttt = new ChiTietThanhToanDTO(rs.getInt("MaKH"),rs.getInt("MaHTTT"),
-                        rs.getDouble("SoTien"),rs.getObject("NgayTT", LocalDate.class));
+
+    @Override
+    public boolean update(ChiTietThanhToanDTO t) {
+        boolean result = false;
+        //Bước 1: tạo kết nối với sql
+        Connection connect = ConnectionDB.openConnection();
+        
+        if (connect != null) {
+            try {
+                String sql = "UPDATE chitietthanhtoan SET "
+                        + "SoTien=?, NgayTT=?"
+                        + "WHERE MaHD=?";
+
+                //Bước 2: tạo đối tượng preparedStatement
+                PreparedStatement stmt = connect.prepareStatement(sql); 
+                
+                stmt.setDouble(1, t.getSoTien());
+                stmt.setDate(2, java.sql.Date.valueOf(t.getNgayThanhToan()));
+                stmt.setInt(3, t.getMaHD());
+
+                result = stmt.executeUpdate()>=1;
+            } catch (SQLException ex) {
+                Logger.getLogger(ChiTietThanhToanDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                ConnectionDB.closeConnection(connect);
             }
-        } catch (Exception e) {
-            System.out.println(e);
         }
-        connect.closeConnect();
-        return cttt;
+        return result;
     }
-    
-    public boolean update (int MaHD,int MaHTTT , Double SoTien, LocalDate NgayTT){
-        String querry = "UPDATE chitietthanhtoan SET SoTien = '" + SoTien + "', NgayTT = '" + NgayTT + "' WHERE MaHD = '" + MaHD + " AND MaHTTT = " + MaHTTT;
-	ConnectionDB conn = new ConnectionDB();
-	boolean ok = conn.sqlUpdate(querry);
-	conn.closeConnect();
-	return ok;
+
+    @Override
+    public boolean delete(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
+    @Override
+    public ArrayList<ChiTietThanhToanDTO> getAll() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public ArrayList<ChiTietThanhToanDTO> getByCondition(String condition) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }    
+
+    @Override
+    public ChiTietThanhToanDTO getById(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
     
 }
+
+    
+

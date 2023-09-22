@@ -10,16 +10,18 @@ public class PhieuNhapDTO {
     private int MaPN, MaNV, MaNCC;
     private LocalDate NgayNhap;
     private double TongTriGia;
+    private boolean TrangThai;
 
     public PhieuNhapDTO() {
     }
 
-    public PhieuNhapDTO(int MaPN, int MaNV, int MaNCC, LocalDate NgayNhap, double TongTriGia) {
+    public PhieuNhapDTO(int MaPN, int MaNV, int MaNCC, LocalDate NgayNhap, double TongTriGia, boolean TrangThai) {
         this.MaPN = MaPN;
         this.MaNV = MaNV;
         this.MaNCC = MaNCC;
         this.NgayNhap = NgayNhap;
         this.TongTriGia = TongTriGia;
+        this.TrangThai = TrangThai;
     }
 
     public int getMaPN() {
@@ -60,6 +62,14 @@ public class PhieuNhapDTO {
 
     public void setTongTriGia(double TongTriGia) {
         this.TongTriGia = TongTriGia;
+    }
+
+    public boolean isTrangThai() {
+        return TrangThai;
+    }
+
+    public void setTrangThai(boolean TrangThai) {
+        this.TrangThai = TrangThai;
     }
     
     
