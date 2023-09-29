@@ -7,6 +7,7 @@ package quanlysieuthimini.DTO;
 public class QuyenDTO {
     private int MaQuyen;
     private String TenQuyen;
+    private boolean TrangThai;
 
     public QuyenDTO() {
     }
@@ -32,6 +33,13 @@ public class QuyenDTO {
         this.TenQuyen = TenQuyen;
     }
 
+    public boolean isTrangThai() {
+        return TrangThai;
+    }
+
+    public void setTrangThai(boolean TrangThai) {
+        this.TrangThai = TrangThai;
+    }
     
     
 }
