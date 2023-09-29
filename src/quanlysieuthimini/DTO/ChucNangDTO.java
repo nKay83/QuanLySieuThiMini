@@ -7,7 +7,6 @@ package quanlysieuthimini.DTO;
 public class ChucNangDTO {
     private int MaCN;
     private String TenCN;
-    private boolean TrangThai;
 
     public ChucNangDTO() {
     }
@@ -32,13 +31,6 @@ public class ChucNangDTO {
     public void setTenCN(String TenCN) {
         this.TenCN = TenCN;
     }
-
-    public boolean isTrangThai() {
-        return TrangThai;
-    }
-
-    public void setTrangThai(boolean TrangThai) {
-        this.TrangThai = TrangThai;
-    }
+    
     
 }

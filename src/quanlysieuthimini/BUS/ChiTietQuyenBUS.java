@@ -9,29 +9,5 @@ import quanlysieuthimini.DAO.ChiTietQuyenDAO;
 import quanlysieuthimini.DTO.ChiTietQuyenDTO;
 
 public class ChiTietQuyenBUS {
-    private ChiTietQuyenDAO dao = new ChiTietQuyenDAO();
-
-    public ChiTietQuyenBUS(){} //constructor
-
-    public ArrayList<ChiTietQuyenDTO>getAll(){
-        return  dao.getAll();
-    }
-    public ChiTietQuyenDTO getById(int id){
-        return  dao.getById(id);
-    }
-    public ChiTietQuyenDTO getByMaCN(int id){
-        return  dao.getByMaCN(id);
-    }
-    public ArrayList<ChiTietQuyenDTO>getBycondition(String cond){
-        return dao.getByCondition(cond);
-    }
-    public boolean update(ChiTietQuyenDTO user){
-        return dao.update(user);
-    }
-    public boolean insert(ChiTietQuyenDTO user){
-        return dao.insert(user);
-    }
-    public boolean delete(int id){
-        return dao.delete(id);
-    }
+    
 }
