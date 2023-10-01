@@ -8,7 +8,7 @@ import quanlysieuthimini.DTO.TaiKhoanDTO;
 import java.util.ArrayList;
 /**
  *
- * @author domin
+ * @author dinmo
  */
 public class TaiKhoanBUS {
     private TaiKhoanDAO dao = new TaiKhoanDAO();
