@@ -9,6 +9,7 @@ import java.util.ArrayList;
 /**
  *
  * @author dinmo
+ * test github2
  */
 public class TaiKhoanBUS {
     private TaiKhoanDAO dao = new TaiKhoanDAO();
