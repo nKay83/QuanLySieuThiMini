@@ -27,7 +27,7 @@ public class TaiKhoanDAO implements DAOInterface<TaiKhoanDTO> {
         Connection connect = ConnectionDB.openConnection();
         if(connect != null){
             try {
-                String sql = "SELECT * FROM taikhoan WHERE TenTK=? and MatKhau=?";
+                String sql = "SELECT * FROM taikhoan WHERE TrangThai=1 AND TenTK=? AND MatKhau=?";
 
                 PreparedStatement stmt = connect.prepareStatement(sql);
                 stmt.setString(1, tenTK);
@@ -58,7 +58,7 @@ public class TaiKhoanDAO implements DAOInterface<TaiKhoanDTO> {
         Connection connect = ConnectionDB.openConnection();
         if(connect != null){
             try {
-                String sql = "INSERT INTO taikhoan (TenTK,MaNguoiDung,MaQuyen,MatKhau,TrangThai) VALUES(?, ?, ?, ?)";
+                String sql = "INSERT INTO taikhoan (TenTK,MaNguoiDung,MaQuyen,MatKhau) VALUES(?, ?, ?)";
 
                 //Bước 2: tạo đối tượng preparedStatement
                 PreparedStatement stmt = connect.prepareStatement(sql);
@@ -66,14 +66,9 @@ public class TaiKhoanDAO implements DAOInterface<TaiKhoanDTO> {
                 stmt.setInt(2, t.getMaNguoiDung());
                 stmt.setInt(3, t.getMaQuyen());
                 stmt.setString(4, t.getMatKhau());
-                if(t.isTrangThai())
-                    stmt.setInt(5, 1);
-                else
-                    stmt.setInt(5, 0);
-                
                 result = stmt.executeUpdate()>=1;
             } catch (SQLException e) {
-                Logger.getLogger(NhaCungCapDAO.class.getName()).log(Level.SEVERE, null, e);
+                Logger.getLogger(TaiKhoanDAO.class.getName()).log(Level.SEVERE, null, e);
             } finally{
                 ConnectionDB.closeConnection(connect);
             }
@@ -105,7 +100,7 @@ public class TaiKhoanDAO implements DAOInterface<TaiKhoanDTO> {
 
                 result = stmt.executeUpdate()>=1; 
             } catch (SQLException ex) {
-                Logger.getLogger(NhaCungCapDAO.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(TaiKhoanDAO.class.getName()).log(Level.SEVERE, null, ex);
             } finally {
                 ConnectionDB.closeConnection(connect);
             }
@@ -130,7 +125,7 @@ public class TaiKhoanDAO implements DAOInterface<TaiKhoanDTO> {
 
                 result = stmt.executeUpdate()>=1; 
             } catch (SQLException ex) {
-                Logger.getLogger(NhaCungCapDAO.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(TaiKhoanDAO.class.getName()).log(Level.SEVERE, null, ex);
             } finally {
                 ConnectionDB.closeConnection(connect);
             }
@@ -167,7 +162,7 @@ public class TaiKhoanDAO implements DAOInterface<TaiKhoanDTO> {
                     result.add(User);
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(NhaCungCapDAO.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(TaiKhoanDAO.class.getName()).log(Level.SEVERE, null, ex);
             } finally {
                 ConnectionDB.closeConnection(connect);
             }
@@ -203,7 +198,7 @@ public class TaiKhoanDAO implements DAOInterface<TaiKhoanDTO> {
                     else
                         result.setTrangThai(false);
             } catch (SQLException ex) {
-                Logger.getLogger(NhaCungCapDAO.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(TaiKhoanDAO.class.getName()).log(Level.SEVERE, null, ex);
             } finally {
                 ConnectionDB.closeConnection(connect);
             }
@@ -241,7 +236,7 @@ public class TaiKhoanDAO implements DAOInterface<TaiKhoanDTO> {
                     result.add(user);
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(NhaCungCapDAO.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(TaiKhoanDAO.class.getName()).log(Level.SEVERE, null, ex);
             } finally {
                 ConnectionDB.closeConnection(connect);
             }

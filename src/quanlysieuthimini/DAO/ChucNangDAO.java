@@ -35,7 +35,7 @@ public class ChucNangDAO implements DAOInterface<ChucNangDTO> {
                 stmt.setString(2, t.getTenCN());
                 result = stmt.executeUpdate()>=1;
             } catch (SQLException e) {
-                Logger.getLogger(NhaCungCapDAO.class.getName()).log(Level.SEVERE, null, e);
+                Logger.getLogger(ChucNangDAO.class.getName()).log(Level.SEVERE, null, e);
             } finally{
                 ConnectionDB.closeConnection(connect);
             }
@@ -61,7 +61,7 @@ public class ChucNangDAO implements DAOInterface<ChucNangDTO> {
 
                 result = stmt.executeUpdate()>=1; 
             } catch (SQLException ex) {
-                Logger.getLogger(NhaCungCapDAO.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ChucNangDAO.class.getName()).log(Level.SEVERE, null, ex);
             } finally {
                 ConnectionDB.closeConnection(connect);
             }
@@ -86,7 +86,7 @@ public class ChucNangDAO implements DAOInterface<ChucNangDTO> {
 
                 result = stmt.executeUpdate()>=1; 
             } catch (SQLException ex) {
-                Logger.getLogger(NhaCungCapDAO.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ChucNangDAO.class.getName()).log(Level.SEVERE, null, ex);
             } finally {
                 ConnectionDB.closeConnection(connect);
             }
@@ -116,7 +116,7 @@ public class ChucNangDAO implements DAOInterface<ChucNangDTO> {
                     result.add(i);
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(NhaCungCapDAO.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ChucNangDAO.class.getName()).log(Level.SEVERE, null, ex);
             } finally {
                 ConnectionDB.closeConnection(connect);
             }
@@ -145,7 +145,7 @@ public class ChucNangDAO implements DAOInterface<ChucNangDTO> {
                 result.setMaCN(rs.getInt(1));
                 result.setTenCN(rs.getString(2));
             } catch (SQLException ex) {
-                Logger.getLogger(NhaCungCapDAO.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ChucNangDAO.class.getName()).log(Level.SEVERE, null, ex);
             } finally {
                 ConnectionDB.closeConnection(connect);
             }
@@ -176,7 +176,7 @@ public class ChucNangDAO implements DAOInterface<ChucNangDTO> {
                     result.add(i);
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(NhaCungCapDAO.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ChucNangDAO.class.getName()).log(Level.SEVERE, null, ex);
             } finally {
                 ConnectionDB.closeConnection(connect);
             }

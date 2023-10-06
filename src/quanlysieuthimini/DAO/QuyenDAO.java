@@ -36,7 +36,7 @@ public class QuyenDAO implements DAOInterface<QuyenDTO> {
                 stmt.setString(2, t.getTenQuyen());
                 result = stmt.executeUpdate()>=1;
             } catch (SQLException e) {
-                Logger.getLogger(NhaCungCapDAO.class.getName()).log(Level.SEVERE, null, e);
+                Logger.getLogger(QuyenDAO.class.getName()).log(Level.SEVERE, null, e);
             } finally{
                 ConnectionDB.closeConnection(connect);
             }
@@ -61,7 +61,7 @@ public class QuyenDAO implements DAOInterface<QuyenDTO> {
 
                 result = stmt.executeUpdate()>=1; 
             } catch (SQLException ex) {
-                Logger.getLogger(NhaCungCapDAO.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(QuyenDAO.class.getName()).log(Level.SEVERE, null, ex);
             } finally {
                 ConnectionDB.closeConnection(connect);
             }
@@ -84,13 +84,13 @@ public class QuyenDAO implements DAOInterface<QuyenDTO> {
                 stmt.setInt(1 , id); 
                 result = stmt.executeUpdate()>=1; 
             } catch (SQLException ex) {
-                Logger.getLogger(NhaCungCapDAO.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(QuyenDAO.class.getName()).log(Level.SEVERE, null, ex);
             } finally {
                 ConnectionDB.closeConnection(connect);
             }
         }
         
-        return result;    
+        return result;
     }
 
     @Override
@@ -114,7 +114,7 @@ public class QuyenDAO implements DAOInterface<QuyenDTO> {
                     result.add(i);
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(NhaCungCapDAO.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(QuyenDAO.class.getName()).log(Level.SEVERE, null, ex);
             } finally {
                 ConnectionDB.closeConnection(connect);
             }
@@ -143,7 +143,7 @@ public class QuyenDAO implements DAOInterface<QuyenDTO> {
                 result.setMaQuyen(rs.getInt(1));
                 result.setTenQuyen(rs.getString(2));
             } catch (SQLException ex) {
-                Logger.getLogger(NhaCungCapDAO.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(QuyenDAO.class.getName()).log(Level.SEVERE, null, ex);
             } finally {
                 ConnectionDB.closeConnection(connect);
             }
@@ -174,7 +174,7 @@ public class QuyenDAO implements DAOInterface<QuyenDTO> {
                     result.add(i);
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(NhaCungCapDAO.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(QuyenDAO.class.getName()).log(Level.SEVERE, null, ex);
             } finally {
                 ConnectionDB.closeConnection(connect);
             }

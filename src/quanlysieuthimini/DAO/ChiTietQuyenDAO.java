@@ -36,7 +36,7 @@ public class ChiTietQuyenDAO implements DAOInterface<ChiTietQuyenDTO> {
                 stmt.setString(3, t.getHanhDong());
                 result = stmt.executeUpdate()>=1;
             } catch (SQLException e) {
-                Logger.getLogger(NhaCungCapDAO.class.getName()).log(Level.SEVERE, null, e);
+                Logger.getLogger(ChiTietQuyenDAO.class.getName()).log(Level.SEVERE, null, e);
             } finally{
                 ConnectionDB.closeConnection(connect);
             }
@@ -63,7 +63,7 @@ public class ChiTietQuyenDAO implements DAOInterface<ChiTietQuyenDTO> {
 
                 result = stmt.executeUpdate()>=1; 
             } catch (SQLException ex) {
-                Logger.getLogger(NhaCungCapDAO.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ChiTietQuyenDAO.class.getName()).log(Level.SEVERE, null, ex);
             } finally {
                 ConnectionDB.closeConnection(connect);
             }
@@ -74,7 +74,27 @@ public class ChiTietQuyenDAO implements DAOInterface<ChiTietQuyenDTO> {
 
     @Override
     public boolean delete(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody  
+        boolean result = false;
+        //Bước 1: tạo kết nối với sql
+        Connection connect = ConnectionDB.openConnection();
+        if (connect != null) {
+            try {
+                String sql = "UPDATE chitietquyen SET TrangThai=0 "
+                        + "WHERE MaCN=?";
+
+                //Bước 2: tạo đối tượng preparedStatement
+                PreparedStatement stmt = connect.prepareStatement(sql); 
+                stmt.setInt(1 , id); 
+
+                result = stmt.executeUpdate()>=1; 
+            } catch (SQLException ex) {
+                Logger.getLogger(ChiTietQuyenDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                ConnectionDB.closeConnection(connect);
+            }
+        }
+        
+        return result;
     }
 
     @Override
@@ -84,7 +104,7 @@ public class ChiTietQuyenDAO implements DAOInterface<ChiTietQuyenDTO> {
         Connection connect = ConnectionDB.openConnection();
         if (connect != null) {
             try {
-                String sql = "SELECT * FROM chitietquyen";
+                String sql = "SELECT * FROM chitietquyen WHERE TrangThai=1 AND";
 
                 //Bước 2: tạo đối tượng preparedStatement
                 PreparedStatement stmt = connect.prepareStatement(sql); 
@@ -99,7 +119,7 @@ public class ChiTietQuyenDAO implements DAOInterface<ChiTietQuyenDTO> {
                     result.add(i);
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(NhaCungCapDAO.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ChiTietQuyenDAO.class.getName()).log(Level.SEVERE, null, ex);
             } finally {
                 ConnectionDB.closeConnection(connect);
             }
@@ -115,7 +135,7 @@ public class ChiTietQuyenDAO implements DAOInterface<ChiTietQuyenDTO> {
         Connection connect = ConnectionDB.openConnection();
         if (connect != null) {
             try {
-                String sql = "SELECT * FROM chitietquyen WHERE MaQuyen=" + id;
+                String sql = "SELECT * FROM chitietquyen WHERE TrangThai=1 AND MaQuyen=" + id;
 
                 //Bước 2: tạo đối tượng preparedStatement
                 PreparedStatement stmt = connect.prepareStatement(sql); 
@@ -129,7 +149,7 @@ public class ChiTietQuyenDAO implements DAOInterface<ChiTietQuyenDTO> {
                 result.setMaCN(rs.getInt(2));
                 result.setHanhDong(rs.getString(3));
             } catch (SQLException ex) {
-                Logger.getLogger(NhaCungCapDAO.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ChiTietQuyenDAO.class.getName()).log(Level.SEVERE, null, ex);
             } finally {
                 ConnectionDB.closeConnection(connect);
             }
@@ -143,7 +163,7 @@ public class ChiTietQuyenDAO implements DAOInterface<ChiTietQuyenDTO> {
         Connection connect = ConnectionDB.openConnection();
         if (connect != null) {
             try {
-                String sql = "SELECT * FROM chitietquyen WHERE MaCN=" + id;
+                String sql = "SELECT * FROM chitietquyen WHERE TrangThai=1 AND MaCN=" + id;
 
                 //Bước 2: tạo đối tượng preparedStatement
                 PreparedStatement stmt = connect.prepareStatement(sql); 
@@ -157,7 +177,7 @@ public class ChiTietQuyenDAO implements DAOInterface<ChiTietQuyenDTO> {
                 result.setMaCN(rs.getInt(2));
                 result.setHanhDong(rs.getString(3));
             } catch (SQLException ex) {
-                Logger.getLogger(NhaCungCapDAO.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ChiTietQuyenDAO.class.getName()).log(Level.SEVERE, null, ex);
             } finally {
                 ConnectionDB.closeConnection(connect);
             }
@@ -173,7 +193,7 @@ public class ChiTietQuyenDAO implements DAOInterface<ChiTietQuyenDTO> {
         Connection connect = ConnectionDB.openConnection();
         if (connect != null) {
             try {
-                String sql = "SELECT * FROM chitietquyen WHERE " + condition;
+                String sql = "SELECT * FROM chitietquyen WHERE TrangThai=1 AND " + condition;
 
                 //Bước 2: tạo đối tượng preparedStatement
                 PreparedStatement stmt = connect.prepareStatement(sql); 
@@ -189,7 +209,7 @@ public class ChiTietQuyenDAO implements DAOInterface<ChiTietQuyenDTO> {
                     result.add(i);
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(NhaCungCapDAO.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ChiTietQuyenDAO.class.getName()).log(Level.SEVERE, null, ex);
             } finally {
                 ConnectionDB.closeConnection(connect);
             }
